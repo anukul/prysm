@@ -10,6 +10,7 @@ proto_library(
     srcs = [
         "beacon_block.proto",
         "beacon_chain.proto",
+        "blobs.proto",
         "ssz.proto",
         "version.proto",
         ":ssz_proto_files",
@@ -45,7 +46,12 @@ ssz_gen_marshal(
         "SignedBlindedBeaconBlockBellatrix",
         "SignedBeaconBlockCapella",
         "SignedBlindedBeaconBlockCapella",
+        "SignedBeaconBlockDeneb",
+        "SignedBlindedBeaconBlockDeneb",
+        "BlsToExecutionChange",
         "SignedBlsToExecutionChange",
+        "SignedBlindedBlobSidecar",
+        "BlindedBlobSidecar",
     ],
 )
 
