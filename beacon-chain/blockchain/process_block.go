@@ -132,7 +132,7 @@ func (s *Service) onBlock(ctx context.Context, signed interfaces.ReadOnlySignedB
 	if err != nil {
 		return err
 	}
-	isValidPayload, err := s.notifyNewPayload(ctx, postStateVersion, postStateHeader, signed)
+	isValidPayload, err := s.notifyNewPayload(ctx, postStateVersion, postStateHeader, signed, blockRoot)
 	if err != nil {
 		return errors.Wrap(err, "could not validate new payload")
 	}
@@ -401,7 +401,7 @@ func (s *Service) onBlockBatch(ctx context.Context, blks []interfaces.ReadOnlySi
 	for i, b := range blks {
 		isValidPayload, err = s.notifyNewPayload(ctx,
 			postVersionAndHeaders[i].version,
-			postVersionAndHeaders[i].header, b)
+			postVersionAndHeaders[i].header, b, blockRoots[i])
 		if err != nil {
 			return err
 		}
