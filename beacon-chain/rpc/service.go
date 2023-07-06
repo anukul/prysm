@@ -280,6 +280,7 @@ func (s *Service) Start() {
 		BeaconDB:               s.cfg.BeaconDB,
 		BlockBuilder:           s.cfg.BlockBuilder,
 	}
+	s.cfg.Router.HandleFunc("/eth/v1/validator/duties/attester/{epoch}", validatorServerV1.GetAttesterDutiesHTTP)
 
 	nodeServer := &nodev1alpha1.Server{
 		LogsStreamer:         logs.NewStreamServer(),
